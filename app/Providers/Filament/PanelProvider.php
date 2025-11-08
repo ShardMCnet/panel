@@ -34,6 +34,9 @@ abstract class PanelProvider extends BasePanelProvider
             ->brandLogo(config('app.logo'))
             ->brandLogoHeight('2rem')
             ->favicon(config('app.favicon', '/pelican.ico'))
+            ->colors([
+                'primary' => Color::Amber,
+            ])
             ->topNavigation(function () {
                 $navigationType = user()?->getCustomization(CustomizationKey::TopNavigation);
 
