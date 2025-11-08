@@ -126,6 +126,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $e): Response
     {
+        if ($request->header('X-Livewire')) {
+            return response()->json([
+                'redirect' => url('/')
+            ], 409);
+        }
+
+        return redirect('/');
+        
         $connections = $this->container->make(Connection::class);
 
         // If we are currently wrapped up inside a transaction, we will roll all the way
